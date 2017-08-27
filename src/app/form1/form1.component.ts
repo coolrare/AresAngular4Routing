@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class Form1Component implements OnInit {
 
   data: any = {
+    title: 'Will',
+    subtitle: 'Hello World'
   };
 
   constructor() { }
@@ -15,4 +17,10 @@ export class Form1Component implements OnInit {
   ngOnInit() {
   }
 
+  doSubmit(form) {
+    console.log(form);
+    if (form.valid) {
+      // HTTP POST
+    }
+  }
 }
