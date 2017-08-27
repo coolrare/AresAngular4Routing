@@ -7,16 +7,24 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginGuard } from './login.guard';
 import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'cards', component: CardsComponent,
-    canActivate: [LoginGuard]
-  },
-  { path: 'cards/:type', component: CardsComponent },
-  { path: 'charts',
-    loadChildren: './charts/charts.module#ChartsModule'
+  {
+    path: '', component: LayoutComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'cards', component: CardsComponent,
+        canActivate: [LoginGuard]
+      },
+      { path: 'cards/:type', component: CardsComponent },
+      {
+        path: 'charts',
+        loadChildren: './charts/charts.module#ChartsModule'
+      }
+    ]
   },
   { path: 'login', component: LoginComponent },
   fallbackRoute
