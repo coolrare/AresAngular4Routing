@@ -1,23 +1,39 @@
 <section>
   <div class="container-fluid">
     <h5 class="mt0">Classic form controls and custom variants</h5>
-    <p class="mb-lg">Standard Bootstrap form and input controls with customized UI variations</p>
+    <pre>data = {{ data | json }}</pre>
+    <pre>form.value = {{ form.value | json }}</pre>
     <div class="card">
       <div class="card-body">
-        <form method="get" action="/" class="form-horizontal">
+        <form #form="ngForm" class="form-horizontal">
           <fieldset>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Rounded Corners</label>
+            <div class="form-group" [class.has-error]="tTitle.dirty && tTitle.invalid">
+              <label class="col-sm-2 control-label">
+                標題
+              </label>
               <div class="col-sm-10">
-                <input type="text" class="form-control rounded">
+                <input name="title" [(ngModel)]="data.title" #tTitle="ngModel" required
+                       type="text" class="form-control rounded">
+                <span class="help-block" *ngIf="tTitle.dirty && tTitle['errors']?.required">請輸入標題</span>
+<pre>
+tTitle.value     = {{ tTitle.value }}
+tTitle.pristine  = {{ tTitle.pristine }}
+tTitle.dirty     = {{ tTitle.dirty }}
+tTitle.touched   = {{ tTitle.touched }}
+tTitle.untouched = {{ tTitle.untouched }}
+tTitle.valid     = {{ tTitle.valid }}
+tTitle.invalid   = {{ tTitle.invalid }}
+tTitle.errors    = {{ tTitle.errors | json }}</pre>
               </div>
             </div>
           </fieldset>
           <fieldset>
             <div class="form-group">
-              <label class="col-sm-2 control-label">With help</label>
+              <label class="col-sm-2 control-label">副標題</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                <input  name="subtitle" [(ngModel)]="data.subtitle" #tSubtitle="ngModel"
+                        type="text" class="form-control">
+                <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
               </div>
             </div>
           </fieldset>
