@@ -8,9 +8,11 @@ import { CardsComponent } from './cards/cards.component';
 import { LoginGuard } from './login.guard';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { Form1Component } from './form1/form1.component';
+import { Form2Component } from './form2/form2.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/form1', pathMatch: 'full' },
   {
     path: '', component: LayoutComponent,
     children: [
@@ -20,6 +22,8 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       { path: 'cards/:type', component: CardsComponent },
+      { path: 'form1', component: Form1Component },
+      { path: 'form2', component: Form2Component },
       {
         path: 'charts',
         loadChildren: './charts/charts.module#ChartsModule'
