@@ -16,7 +16,7 @@
                   </ul>
                 </div>
                 <!-- END dropdown-->
-                <div class="card-title">{{ type }}</div>
+                <div class="card-title">type = {{ type }}</div>
               </div>
               <div class="card-body">
                 <p>Nulla egestas faucibus tincidunt.</p>
@@ -33,7 +33,7 @@
           <div class="col-sm-6 col-xs-12">
             <div class="card">
               <div class="card-heading bg-primary">
-                <div class="card-title">Paracosm</div>
+                <div class="card-title">name = {{ name }}</div>
               </div>
               <div class="card-offset">
                 <div class="card-offset-item text-right">
@@ -44,8 +44,10 @@
                 <p class="mb-sm">Cras rutrum scelerisque auctor. Donec ultricies blandit venenatis. Nulla facilisi. Praesent diam diam, venenatis lorem par.</p>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-flat btn-default">Action 1</button>
-                <button type="button" class="btn btn-flat btn-default">Action 2</button>
+                <button [routerLink]="['/cards', '101', { name: 'Will Matrix' } ]"
+                        type="button" class="btn btn-flat btn-default">Matrix URL</button>
+                <button [routerLink]="['/cards', '101']" [queryParams]="{ name: 'Will QueryString' }"
+                        type="button" class="btn btn-flat btn-default">QueryString</button>
               </div>
             </div>
           </div>
